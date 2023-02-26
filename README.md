@@ -1,1 +1,1 @@
-# bechdelai-demo
+# bechdelai-tool-demo
