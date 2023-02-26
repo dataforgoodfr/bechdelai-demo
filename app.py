@@ -128,6 +128,7 @@ with demo:
                         [
                         "https://www.youtube.com/watch?v=FDFdroN7d0w",
                         "https://www.youtube.com/watch?v=b2f2Kqt_KcE",
+                        "https://www.youtube.com/watch?v=ba5F8G778C0",
                     ],
                     label="Examples", inputs=[youtube_url_in])
                 youtube_url_in.render()
