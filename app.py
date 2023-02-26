@@ -113,18 +113,11 @@ with demo:
         gr.Markdown('''
             <div>
                 <h1 style='text-align: center'>BechdelAI - Dialogue demo</h1>
-                # <img src="logo.png" style="width:200px"/>
             </div>
         ''')
 
         with gr.Row():
-            gr.Markdown('''
-            ### Transcribe youtube link using OpenAI Whisper
-            ##### 1. Using Open AI's Whisper model to seperate audio into segments and generate transcripts.
-            ##### 2. Generating speaker embeddings for each segments.
-            ##### 3. Applying agglomerative clustering on the embeddings to identify the speaker for each segment.
-            ''')
-            
+            gr.Markdown('''# 🎥 Download Youtube video''')
               
 
         with gr.Row():
@@ -132,19 +125,11 @@ with demo:
             with gr.Column():
                 # gr.Markdown('''### You can test by following examples:''')
                 examples = gr.Examples(examples=
-                        [ "https://www.youtube.com/watch?v=j7BfEzAFuYc&t=32s", 
-                        "https://www.youtube.com/watch?v=-UX0X45sYe4", 
-                        "https://www.youtube.com/watch?v=7minSgqi-Gw"],
+                        [
+                        "https://www.youtube.com/watch?v=FDFdroN7d0w",
+                        "https://www.youtube.com/watch?v=b2f2Kqt_KcE",
+                    ],
                     label="Examples", inputs=[youtube_url_in])
-
-            with gr.Column():
-                youtube_url_in.render()
-                download_youtube_btn = gr.Button("Download Youtube video")
-                download_youtube_btn.click(get_youtube, [youtube_url_in], [
-                    video_in])
-                print(video_in)
-
-            with gr.Column():
                 youtube_url_in.render()
                 download_youtube_btn = gr.Button("Download Youtube video")
                 download_youtube_btn.click(get_youtube, [youtube_url_in], [
@@ -155,25 +140,14 @@ with demo:
                 video_in.render()
 
         with gr.Row():
+            gr.Markdown('''# 🎙 Extract text from video''')
+
+        with gr.Row():
             with gr.Column():
-                with gr.Column():
-                    gr.Markdown('''
-                    ##### Here you can start the transcription process.
-                    ##### Please select the source language for transcription.
-                    ##### You should select a number of speakers for getting better results.
-                    ''')
                 selected_source_lang.render()
                 selected_whisper_model.render()
                 transcribe_btn = gr.Button("Transcribe audio and diarization")
                 transcribe_btn.click(speech_to_text, [video_in, selected_source_lang, selected_whisper_model], [output_text])
-
-                
-        # with gr.Row():
-        #     gr.Markdown('''
-        #     ##### Here you will get transcription  output
-        #     ##### ''')
-
-        with gr.Row():
             with gr.Column():
                 output_text.render()
 
